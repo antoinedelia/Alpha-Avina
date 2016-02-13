@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjetExiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Processu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProcessus" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CPU" Type="Double" Nullable="false" />
+    <Property Name="RAM" Type="Double" Nullable="false" />
+    <Property Name="IdRessources" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ressource" Relationship="Self.FK_Ressource" FromRole="Processus" ToRole="Ressources" />
+  </EntityType>
+  <EntityType Name="Ressource">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Proc" Type="Double" Nullable="false" />
+    <Property Name="TotalVisibleMemorySize" Type="Int32" Nullable="false" />
+    <Property Name="FreePhysicalMemory" Type="Int32" Nullable="false" />
+    <Property Name="TotalVirtualMemorySize" Type="Int32" Nullable="false" />
+    <Property Name="FreeVirtualMemory" Type="Int32" Nullable="false" />
+    <Property Name="Largeur" Type="Int32" />
+    <Property Name="Hauteur" Type="Int32" />
+    <NavigationProperty Name="Processus" Relationship="Self.FK_Ressource" FromRole="Ressources" ToRole="Processus" />
+  </EntityType>
+  <Association Name="FK_Ressource">
+    <End Role="Ressources" Type="Self.Ressource" Multiplicity="1" />
+    <End Role="Processus" Type="Self.Processu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ressources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Processus">
+        <PropertyRef Name="IdRessources" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjetExiaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Processus" EntityType="Self.Processu" />
+    <EntitySet Name="Ressources" EntityType="Self.Ressource" />
+    <AssociationSet Name="FK_Ressource" Association="Self.FK_Ressource">
+      <End Role="Ressources" EntitySet="Ressources" />
+      <End Role="Processus" EntitySet="Processus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

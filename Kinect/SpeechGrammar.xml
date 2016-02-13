@@ -1,0 +1,71 @@
+﻿<grammar version="1.0" xml:lang="fr-FR" root="rootRule" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="rootRule">
+    <one-of>
+      <item>
+        <tag>BONJOUR</tag>
+        <one-of>
+          <item> bonjour </item>
+          <item> salut </item>
+          <item> coucou </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>CA_VA</tag>
+        <one-of>
+          <item> tu vas bien </item>
+          <item> comment va tu </item>
+          <item> ca va </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>RACONTE</tag>
+        <one-of>
+          <item>  </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>BLAGUE</tag>
+        <one-of>
+          <item> raconte moi une blague </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>VIDEO</tag>
+        <one-of>
+          <item> video </item>
+          <item> vidéo </item>
+          <item> démarrer une vidéo </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>RETOUR</tag>
+        <one-of>
+          <item> retour </item>
+          <item> back </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>ROTATE</tag>
+        <one-of>
+          <item> tourne </item>
+          <item> rotate </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>ZOOM</tag>
+        <one-of>
+          <item> zoom </item>
+          <item> agrandir </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>PRESENTATION</tag>
+        <one-of>
+          <item> presente toi </item>
+          <item> presentation </item>
+          <item> présentation </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+</grammar>

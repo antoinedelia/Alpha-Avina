@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjetExiaModelStoreContainer" CdmEntityContainer="ProjetExiaEntities">
+    <EntitySetMapping Name="Processus">
+      <EntityTypeMapping TypeName="ProjetExiaModel.Processu">
+        <MappingFragment StoreEntitySet="Processus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProcessus" ColumnName="IdProcessus" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="CPU" ColumnName="CPU" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="IdRessources" ColumnName="IdRessources" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ressources">
+      <EntityTypeMapping TypeName="ProjetExiaModel.Ressource">
+        <MappingFragment StoreEntitySet="Ressources">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Proc" ColumnName="Proc" />
+          <ScalarProperty Name="TotalVisibleMemorySize" ColumnName="TotalVisibleMemorySize" />
+          <ScalarProperty Name="FreePhysicalMemory" ColumnName="FreePhysicalMemory" />
+          <ScalarProperty Name="TotalVirtualMemorySize" ColumnName="TotalVirtualMemorySize" />
+          <ScalarProperty Name="FreeVirtualMemory" ColumnName="FreeVirtualMemory" />
+          <ScalarProperty Name="Largeur" ColumnName="Largeur" />
+          <ScalarProperty Name="Hauteur" ColumnName="Hauteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

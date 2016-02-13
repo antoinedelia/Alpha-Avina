@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjetExiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Processus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProcessus" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CPU" Type="float" Nullable="false" />
+    <Property Name="RAM" Type="float" Nullable="false" />
+    <Property Name="IdRessources" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ressources">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Proc" Type="float" Nullable="false" />
+    <Property Name="TotalVisibleMemorySize" Type="int" Nullable="false" />
+    <Property Name="FreePhysicalMemory" Type="int" Nullable="false" />
+    <Property Name="TotalVirtualMemorySize" Type="int" Nullable="false" />
+    <Property Name="FreeVirtualMemory" Type="int" Nullable="false" />
+    <Property Name="Largeur" Type="int" />
+    <Property Name="Hauteur" Type="int" />
+  </EntityType>
+  <Association Name="FK_Ressource">
+    <End Role="Ressources" Type="Self.Ressources" Multiplicity="1" />
+    <End Role="Processus" Type="Self.Processus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ressources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Processus">
+        <PropertyRef Name="IdRessources" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjetExiaModelStoreContainer">
+    <EntitySet Name="Processus" EntityType="Self.Processus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ressources" EntityType="Self.Ressources" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ressource" Association="Self.FK_Ressource">
+      <End Role="Ressources" EntitySet="Ressources" />
+      <End Role="Processus" EntitySet="Processus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
